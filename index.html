@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>devCodeCamp &middot; Most Wanted</title>
+    <center><h2>MOST WANTED</h2></center>
+  </head>
+  <body>
+    <center><form>
+    Please enter your name to begin searching:
+    <input id="userName" onkeydown="if (event.keyCode == 13) { welcome(); return false; }"/>
+    <button id="userName" onclick="welcome()">Begin Search</button>
+    </form></center>
+    <script>
+    function welcome(){
+      var name = document.getElementById("userName").value;
+      alert("Welcome " + name + ", you may begin you search.");
+      beginSearch(data);
+      }
+    </script>
+    <script src="data.js"></script>
+    <script src="gui.js"></script>
+    <script src="app.js"></script>
+  </body>
+</html>
