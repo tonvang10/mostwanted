@@ -105,15 +105,20 @@ function displayInformation(person){
 		"\nEye Color:       " + person.eyeColor + 
 		"\nOccupation:    " + person.occupation);
 }
-function calculateAge(birthday, people){
-	var today = new Date();
-	var dob = new Date(personDate);
-	var age = today.getFullYear() - dob.getFullYear();
-	var m = today.getMonth() - dob.getMonth();
-	if (m < 0 || (m === 0 && today.getDate() < dob.getDate())) {
-		age--;
-	}
-	return age;
+function convertHeight(height){
+    var convertedHeight = ((height/12).toString().split(/[.]/)[0]) + "'" + (height % 12) + "''";
+    return convertedHeight;
+}
+function calculateAge(dateString){
+    var today = new Date();
+    var birthDate = new Date(dateString);
+    var age = today.getFullYear() - birthDate.getFullYear();
+    var m = today.getMonth() - birthDate.getMonth();
+    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate()))
+    {
+        age--;
+    }
+    return age;
 }
 function getImmediateFamily(person, people){
     var parents = getParents(person, people);
