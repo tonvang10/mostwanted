@@ -55,10 +55,18 @@ describe('getDescendant-empty', function(){
 });
 
 describe('getNextOfKin', function(){
-  it("getNextOfKin of Mader", function() {
+  it("getNextOfKin of Billy", function() {
     var Billy = [{"id": 272822514,"firstName": "Billy","lastName": "Bob","gender": "male","dob": "1/18/1949","height": 71,"weight": 175,"eyeColor": "brown","occupation": "programmer","parents": [],"currentSpouse": 401222887}];
     var Uma = [{"id":401222887,firstName:"Uma",lastName:"Bob",gender:"female",dob:"4/1/1947",height:65,weight:162,eyeColor:"brown",occupation:"assistant",parents:[],currentSpouse:272822514}];
     expect(getNextOfKin(Uma[0], data)).toEqual(Billy);
+  });
+});
+
+describe('getNextOfKin-empty', function(){
+  it("getNextOfKin of Mader", function() {
+    var emptyList = [];
+    var Mader = [{"id": 888201200,"firstName": "Mader","lastName": "Madden","gender": "male","dob": "5/6/1937","height": 76,"weight": 205,"eyeColor": "black","occupation": "landscaper","parents": [],"currentSpouse": null}];
+    expect(getNextOfKin(mader[0], data)).toEqual(emptyList);
   });
 });
 
@@ -86,9 +94,20 @@ describe('convertHeight', function(){
   });
 });
 
+describe('convertHeight not valid', function(){
+  it('convert', function() {
+    expect(convertHeight("")).toEqual(NaN);
+  });
+});
 describe('convertHeight other', function(){
   it("convert 5'11''", function() {
     expect(convertHeight("5'11''")).toEqual(NaN+"'"+NaN+"''");
+  });
+});
+
+describe('convertHeight', function(){
+  it('convert 144', function() {
+    expect(convertHeight(144)).toEqual("12'0''");
   });
 });
 
@@ -116,10 +135,10 @@ describe('getSiblings-empty', function(){
   });
 });
 
-// describe('getSiblings', function(){
-//   it('siblings', function(){
-//     var Annie = { "id": 348457184,"firstName": "Annie","lastName": "Pafoy","gender": "female","dob": "11/4/1970","height": 62,"weight": 235,"eyeColor": "hazel","occupation": "landscaper","parents": [629807187, 464142841],"currentSpouse": null};
-//     var siblings = [{"id": 294874671, "firstName": 'Dave', "lastName": "Pafoy", "gender": "male", "dob": "8/5/1967", "height": 61, "weight": 112, "eyeColor": "green", "occupation": "doctor", "parents": [ 629807187, 464142841 ], "currentSpouse": 878013758 }, { "id": 931247228, "firstName": "Amii", "lastName": "Pafoy", "gender": "female", "dob": "3/13/1963", "height": 74, "weight": 184, "eyeColor": "brown", "occupation": "landscaper", "parents": [ 629807187, 464142841 ], "currentSpouse": null }];
-//     expect(getSiblings(Annie, data)).toEqual(siblings);
-//   });
-// });
+describe('getSiblings', function(){
+  it('siblings', function(){
+    var Annie = { "id": 348457184,"firstName": "Annie","lastName": "Pafoy","gender": "female","dob": "11/4/1970","height": 62,"weight": 235,"eyeColor": "hazel","occupation": "landscaper","parents": [629807187, 464142841],"currentSpouse": null};
+    var siblings = [{"id": 294874671, "firstName": 'Dave', "lastName": "Pafoy", "gender": "male", "dob": "8/5/1967", "height": 61, "weight": 112, "eyeColor": "green", "occupation": "doctor", "parents": [ 629807187, 464142841 ], "currentSpouse": 878013758 },{ "id": 931247228, "firstName": "Amii", "lastName": "Pafoy", "gender": "female", "dob": "3/13/1963", "height": 74, "weight": 184, "eyeColor": "brown", "occupation": "landscaper", "parents": [ 629807187, 464142841 ], "currentSpouse": null }];
+    expect(getSiblings(Annie, data)).toEqual(siblings);
+  });
+});
